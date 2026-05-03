@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sambo Roofing</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–olive:  #4A6741;
+–forest: #2A3A26;
+–cream:  #F6F0E2;
+–sage:   #C4D4B8;
+–white:  #FFFFFF;
+–light:  #F9F7F2;
+–text:   #2A2A2A;
+–muted:  #777;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: ‘Barlow’, sans-serif; background: var(–white); color: var(–text); overflow-x: hidden; }
+
+/* ─────────────────────────────────────────
+NAV
+───────────────────────────────────────── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+background: rgba(255,255,255,0.97);
+border-bottom: 1px solid #eee;
+padding: 0 48px;
+height: 68px;
+display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 800; font-size: 26px;
+letter-spacing: 0.04em; text-transform: uppercase;
+color: var(–forest); text-decoration: none;
+}
+.nav-logo span { color: var(–olive); }
+
+.nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
+.nav-links a {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 600; font-size: 13px;
+letter-spacing: 0.14em; text-transform: uppercase;
+color: var(–forest); text-decoration: none; opacity: 0.6;
+transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+background: var(–olive) !important; color: var(–cream) !important;
+opacity: 1 !important; padding: 10px 22px; border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────
+HERO
+───────────────────────────────────────── */
+#hero {
+min-height: 100vh;
+background: var(–forest);
+display: flex; align-items: center;
+position: relative; overflow: hidden;
+padding-top: 68px;
+}
+
+.hero-img {
+position: absolute; inset: 0;
+background: url(‘https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600’) center/cover no-repeat;
+filter: grayscale(100%) contrast(1.05) brightness(0.45);
+z-index: 0;
+}
+
+.hero-overlay {
+position: absolute; inset: 0;
+background: linear-gradient(105deg, rgba(42,58,38,0.96) 40%, rgba(42,58,38,0.4) 100%);
+z-index: 1;
+}
+
+.hero-content {
+position: relative; z-index: 2;
+padding: 80px 48px; max-width: 820px;
+}
+
+.eyebrow {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 600; font-size: 12px;
+letter-spacing: 0.26em; text-transform: uppercase;
+color: var(–sage);
+display: flex; align-items: center; gap: 12px;
+margin-bottom: 24px;
+}
+.eyebrow::before {
+content: ‘’; display: block;
+width: 36px; height: 2px; background: var(–olive);
+}
+
+.hero-h1 {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 800;
+font-size: clamp(56px, 9vw, 104px);
+line-height: 0.92; text-transform: uppercase;
+color: var(–cream); letter-spacing: -0.01em;
+margin-bottom: 28px;
+}
+.hero-h1 em { font-style: normal; color: var(–olive); }
+
+.hero-sub {
+font-size: 17px; color: var(–sage);
+line-height: 1.75; max-width: 500px;
+margin-bottom: 44px; font-weight: 300;
+}
+
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+.btn {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 700; font-size: 13px;
+letter-spacing: 0.16em; text-transform: uppercase;
+padding: 14px 30px; border-radius: 2px;
+text-decoration: none; display: inline-block;
+transition: all 0.2s; cursor: pointer; border: none;
+}
+.btn-primary { background: var(–olive); color: var(–cream); }
+.btn-primary:hover { background: #3d5636; }
+.btn-outline {
+background: transparent; color: var(–cream);
+border: 1.5px solid rgba(255,255,255,0.3);
+}
+.btn-outline:hover { border-color: var(–sage); color: var(–sage); }
+.btn-dark { background: var(–forest); color: var(–cream); }
+.btn-dark:hover { background: #1a2518; }
+
+.hero-bottom {
+position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+padding: 0 48px 48px;
+display: flex; gap: 0;
+}
+
+.stat {
+padding: 0 40px 0 0;
+border-right: 1px solid rgba(255,255,255,0.1);
+margin-right: 40px;
+}
+.stat:last-child { border-right: none; }
+
+.stat-num {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 800; font-size: 40px;
+color: var(–cream); line-height: 1;
+}
+.stat-num span { color: var(–olive); }
+.stat-label {
+font-size: 11px; letter-spacing: 0.16em;
+text-transform: uppercase; color: var(–sage);
+margin-top: 5px; font-weight: 500;
+}
+
+/* ─────────────────────────────────────────
+SECTION SHARED
+───────────────────────────────────────── */
+section { padding: 100px 48px; }
+
+.section-tag {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 600; font-size: 11px;
+letter-spacing: 0.26em; text-transform: uppercase;
+color: var(–olive);
+display: flex; align-items: center; gap: 10px;
+margin-bottom: 16px;
+}
+.section-tag::before {
+content: ‘’; display: block;
+width: 24px; height: 2px; background: var(–olive);
+}
+
+.section-h2 {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 800;
+font-size: clamp(36px, 5vw, 60px);
+line-height: 1; text-transform: uppercase;
+color: var(–forest); letter-spacing: -0.01em;
+margin-bottom: 20px;
+}
+
+.section-h2-light { color: var(–cream); }
+
+.section-body {
+font-size: 16px; color: var(–muted);
+line-height: 1.8; max-width: 560px;
+font-weight: 400;
+}
+
+/* ─────────────────────────────────────────
+BRAND QUOTE STRIP
+───────────────────────────────────────── */
+#quote {
+background: var(–olive);
+padding: 72px 48px;
+text-align: center;
+}
+
+.quote-mark {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 80px; line-height: 0.5;
+color: rgba(255,255,255,0.15);
+font-weight: 800;
+margin-bottom: 16px;
+display: block;
+}
+
+.quote-text {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 700;
+font-size: clamp(28px, 4vw, 52px);
+line-height: 1.15; text-transform: uppercase;
+color: var(–cream); letter-spacing: 0.01em;
+max-width: 820px; margin: 0 auto 20px;
+}
+
+.quote-text em { font-style: normal; color: var(–forest); }
+
+.quote-attr {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 600; font-size: 12px;
+letter-spacing: 0.22em; text-transform: uppercase;
+color: rgba(255,255,255,0.5);
+}
+
+/* ─────────────────────────────────────────
+SERVICES
+───────────────────────────────────────── */
+#services { background: var(–light); }
+
+.services-header {
+display: flex; justify-content: space-between;
+align-items: flex-end; margin-bottom: 56px;
+flex-wrap: wrap; gap: 24px;
+}
+
+.services-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2px;
+}
+
+.service-card {
+background: var(–white);
+padding: 40px 36px;
+position: relative;
+transition: background 0.25s;
+cursor: default;
+}
+.service-card:hover { background: var(–forest); }
+.service-card:hover .service-name { color: var(–cream); }
+.service-card:hover .service-desc { color: var(–sage); }
+.service-card:hover .service-num { color: rgba(255,255,255,0.08); }
+.service-card:hover .service-icon { background: var(–olive); }
+
+.service-num {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 800; font-size: 64px;
+color: #f0ede6; line-height: 1;
+position: absolute; top: 24px; right: 28px;
+transition: color 0.25s;
+}
+
+.service-icon {
+width: 44px; height: 44px;
+background: var(–sage);
+border-radius: 2px;
+display: flex; align-items: center; justify-content: center;
+margin-bottom: 20px;
+transition: background 0.25s;
+}
+
+.service-icon svg { width: 22px; height: 22px; fill: var(–forest); }
+.service-card:hover .service-icon svg { fill: var(–cream); }
+
+.service-name {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 700; font-size: 20px;
+text-transform: uppercase; letter-spacing: 0.04em;
+color: var(–forest); margin-bottom: 10px;
+transition: color 0.25s;
+}
+
+.service-desc {
+font-size: 14px; color: var(–muted);
+line-height: 1.7; transition: color 0.25s;
+}
+
+/* ─────────────────────────────────────────
+IMAGE GALLERY — B&W TREATMENT
+───────────────────────────────────────── */
+#gallery { background: var(–forest); padding: 100px 0; }
+
+.gallery-header { padding: 0 48px; margin-bottom: 48px; }
+
+.gallery-note {
+font-size: 13px; color: var(–sage); margin-top: 12px;
+font-style: italic; opacity: 0.7;
+}
+
+.gallery-strip {
+display: flex; gap: 3px; overflow-x: auto;
+padding: 0 48px;
+scrollbar-width: none;
+}
+.gallery-strip::-webkit-scrollbar { display: none; }
+
+.gallery-item {
+flex-shrink: 0;
+position: relative; overflow: hidden;
+cursor: pointer;
+}
+
+.gallery-item:nth-child(1) { width: 420px; height: 340px; }
+.gallery-item:nth-child(2) { width: 280px; height: 340px; }
+.gallery-item:nth-child(3) { width: 360px; height: 340px; }
+.gallery-item:nth-child(4) { width: 300px; height: 340px; }
+
+/* B&W image treatment direction */
+.gallery-img {
+width: 100%; height: 100%;
+object-fit: cover;
+filter: grayscale(100%) contrast(1.1) brightness(0.85);
+transition: filter 0.4s ease, transform 0.4s ease;
+display: block;
+}
+.gallery-item:hover .gallery-img {
+filter: grayscale(0%) contrast(1.05) brightness(0.9);
+transform: scale(1.03);
+}
+
+/* Colour image treatment */
+.gallery-img.colour {
+filter: contrast(1.05) saturate(0.85) brightness(0.88);
+}
+.gallery-item:hover .gallery-img.colour {
+filter: contrast(1.05) saturate(1) brightness(0.92);
+transform: scale(1.03);
+}
+
+.gallery-label {
+position: absolute; bottom: 0; left: 0; right: 0;
+padding: 32px 20px 16px;
+background: linear-gradient(to top, rgba(42,58,38,0.9), transparent);
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 600; font-size: 12px;
+letter-spacing: 0.16em; text-transform: uppercase;
+color: var(–sage); opacity: 0;
+transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-label { opacity: 1; }
+
+/* ─────────────────────────────────────────
+IMAGE TREATMENT GUIDE (for Squarespace)
+───────────────────────────────────────── */
+#treatment {
+background: #111;
+padding: 72px 48px;
+}
+
+.treatment-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 24px; margin-top: 40px;
+}
+
+.treatment-card {
+background: #1a1a1a;
+border: 1px solid #2a2a2a;
+border-radius: 3px;
+overflow: hidden;
+}
+
+.treatment-preview {
+height: 140px;
+background: url(‘https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600’) center/cover;
+}
+.treatment-preview.bw { filter: grayscale(100%) contrast(1.1) brightness(0.85); }
+.treatment-preview.colour-treated { filter: contrast(1.05) saturate(0.85) brightness(0.88); }
+.treatment-preview.original { filter: none; }
+
+.treatment-info { padding: 16px 20px; }
+.treatment-name {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 700; font-size: 14px;
+letter-spacing: 0.1em; text-transform: uppercase;
+color: var(–sage); margin-bottom: 6px;
+}
+.treatment-desc { font-size: 12px; color: #666; line-height: 1.6; }
+.treatment-code {
+font-family: monospace; font-size: 11px;
+color: var(–olive); margin-top: 8px;
+display: block;
+}
+
+/* ─────────────────────────────────────────
+REVIEWS
+───────────────────────────────────────── */
+#reviews { background: var(–cream); }
+
+.reviews-header { margin-bottom: 56px; }
+
+.stars {
+color: var(–olive);
+font-size: 18px; letter-spacing: 2px;
+margin-bottom: 16px; display: block;
+}
+
+.reviews-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 20px;
+}
+
+.review-card {
+background: var(–white);
+padding: 32px 28px;
+border-radius: 2px;
+border-left: 3px solid var(–olive);
+}
+
+.review-stars { color: var(–olive); font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
+
+.review-text {
+font-size: 15px; color: var(–text);
+line-height: 1.75; margin-bottom: 20px;
+font-style: italic;
+}
+
+.review-author {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 700; font-size: 14px;
+letter-spacing: 0.1em; text-transform: uppercase;
+color: var(–forest);
+}
+
+.review-location {
+font-size: 12px; color: var(–muted);
+margin-top: 2px; letter-spacing: 0.06em;
+}
+
+.reviews-footer {
+margin-top: 48px;
+display: flex; align-items: center; gap: 20px;
+flex-wrap: wrap;
+}
+
+.google-badge {
+display: flex; align-items: center; gap: 10px;
+background: var(–white); padding: 12px 20px;
+border-radius: 2px;
+}
+
+.google-badge-score {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 800; font-size: 28px; color: var(–forest);
+}
+
+.google-badge-detail {
+font-size: 12px; color: var(–muted);
+line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────
+CALLOUT REQUEST FORM
+───────────────────────────────────────── */
+#callout {
+background: var(–forest);
+padding: 100px 48px;
+}
+
+.callout-wrap {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px; align-items: start;
+max-width: 1100px; margin: 0 auto;
+}
+
+.callout-left {}
+
+.callout-promise {
+margin-top: 32px;
+display: flex; flex-direction: column; gap: 16px;
+}
+
+.promise-item {
+display: flex; gap: 14px; align-items: flex-start;
+}
+
+.promise-dot {
+width: 8px; height: 8px;
+border-radius: 50%; background: var(–olive);
+flex-shrink: 0; margin-top: 6px;
+}
+
+.promise-text {
+font-size: 15px; color: var(–sage); line-height: 1.6;
+}
+
+.promise-text strong { color: var(–cream); font-weight: 600; }
+
+/* Form */
+.form-wrap {
+background: var(–cream);
+padding: 44px 40px;
+border-radius: 2px;
+}
+
+.form-title {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 800; font-size: 28px;
+text-transform: uppercase; letter-spacing: 0.02em;
+color: var(–forest); margin-bottom: 6px;
+}
+
+.form-sub {
+font-size: 13px; color: var(–muted);
+margin-bottom: 28px; line-height: 1.6;
+}
+
+.form-group { margin-bottom: 16px; }
+
+.form-label {
+display: block;
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 600; font-size: 11px;
+letter-spacing: 0.18em; text-transform: uppercase;
+color: var(–forest); margin-bottom: 7px;
+}
+
+.form-input, .form-select, .form-textarea {
+width: 100%;
+padding: 12px 16px;
+border: 1.5px solid #ddd;
+border-radius: 2px;
+font-family: ‘Barlow’, sans-serif;
+font-size: 14px; color: var(–text);
+background: var(–white);
+outline: none;
+transition: border-color 0.2s;
+appearance: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus { border-color: var(–olive); }
+
+.form-textarea { resize: vertical; min-height: 100px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.form-submit {
+width: 100%; margin-top: 8px;
+background: var(–olive); color: var(–cream);
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 700; font-size: 14px;
+letter-spacing: 0.16em; text-transform: uppercase;
+padding: 16px; border: none; border-radius: 2px;
+cursor: pointer; transition: background 0.2s;
+}
+.form-submit:hover { background: var(–forest); }
+
+.form-note {
+font-size: 11px; color: var(–muted);
+text-align: center; margin-top: 12px;
+line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────
+FOOTER
+───────────────────────────────────────── */
+footer {
+background: #111;
+padding: 48px;
+display: flex; justify-content: space-between;
+align-items: center; flex-wrap: wrap; gap: 20px;
+}
+
+.footer-logo {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 800; font-size: 24px;
+letter-spacing: 0.04em; text-transform: uppercase;
+color: var(–cream); text-decoration: none;
+}
+.footer-logo span { color: var(–olive); }
+
+.footer-tagline {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 600; font-size: 10px;
+letter-spacing: 0.22em; text-transform: uppercase;
+color: #555; margin-top: 4px;
+}
+
+.footer-copy {
+font-size: 12px; color: #444;
+line-height: 1.6; text-align: right;
+}
+
+/* ─────────────────────────────────────────
+RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+nav { padding: 0 20px; }
+.nav-links { display: none; }
+section { padding: 72px 20px; }
+#hero { padding-top: 68px; }
+.hero-content { padding: 60px 20px; }
+.hero-bottom { padding: 0 20px 36px; gap: 24px; flex-wrap: wrap; }
+.stat { padding: 0; border: none; margin: 0; }
+.callout-wrap { grid-template-columns: 1fr; gap: 40px; }
+.form-row { grid-template-columns: 1fr; }
+#gallery { padding: 72px 0; }
+.gallery-header { padding: 0 20px; }
+.gallery-strip { padding: 0 20px; }
+footer { padding: 36px 20px; flex-direction: column; align-items: flex-start; }
+.footer-copy { text-align: left; }
+#quote { padding: 60px 20px; }
+#treatment { padding: 60px 20px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#hero" class="nav-logo">SAMBO<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Our Work</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#callout" class="nav-cta btn">Request a Call Out</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Roofing Since 2001</div>
+    <h1 class="hero-h1">
+      Roofing.<br>
+      <em>Built to Last.</em>
+    </h1>
+    <p class="hero-sub">
+      24 years. One standard. We know what we're doing — and we do it properly, every single time.
+    </p>
+    <div class="hero-actions">
+      <a href="#callout" class="btn btn-primary">Request a Call Out</a>
+      <a href="#services" class="btn btn-outline">See Our Services</a>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="stat">
+      <div class="stat-num">24<span>+</span></div>
+      <div class="stat-label">Years in Business</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">500<span>+</span></div>
+      <div class="stat-label">Roofs Completed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5<span>yr</span></div>
+      <div class="stat-label">Workmanship Guarantee</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND QUOTE STRIP -->
+
+<div id="quote">
+  <span class="quote-mark">"</span>
+  <p class="quote-text">
+    Since 2001, we haven't cut a single corner.<br>
+    <em>We're not about to start now.</em>
+  </p>
+  <span class="quote-attr">— Sambo Roofing, Est. 2001</span>
+</div>
+
+<!-- SERVICES -->
+
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-h2">We Know<br>Roofs</h2>
+    </div>
+    <p class="section-body">
+      24 years of expertise across every roof type. We've seen it all — and we know exactly how to fix it.
+    </p>
+  </div>
+
+  <div class="services-grid">
+
+```
+<div class="service-card">
+  <span class="service-num">01</span>
+  <div class="service-icon">
+    <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v9h6v-5h2v5h6v-9h3L12 3z"/></svg>
+  </div>
+  <div class="service-name">Roof Repairs</div>
+  <p class="service-desc">We find where it's coming from and we fix it properly. Not a quick patch — a proper repair that holds.</p>
+</div>
+
+<div class="service-card">
+  <span class="service-num">02</span>
+  <div class="service-icon">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+  </div>
+  <div class="service-name">Waterproofing</div>
+  <p class="service-desc">Done right the first time. We use the correct systems for your roof type — no guesswork, no shortcuts.</p>
+</div>
+
+<div class="service-card">
+  <span class="service-num">03</span>
+  <div class="service-icon">
+    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+  </div>
+  <div class="service-name">New Roofs</div>
+  <p class="service-desc">From the first nail to the final clean-up. We manage the whole job and hand it over properly done.</p>
+</div>
+
+<div class="service-card">
+  <span class="service-num">04</span>
+  <div class="service-icon">
+    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+  </div>
+  <div class="service-name">Roof Inspections</div>
+  <p class="service-desc">We come out, we look properly, and we tell you exactly what's there. Written report with photos. No surprises.</p>
+</div>
+
+<div class="service-card">
+  <span class="service-num">05</span>
+  <div class="service-icon">
+    <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+  </div>
+  <div class="service-name">Gutters & Drainage</div>
+  <p class="service-desc">Blocked gutters cause serious damage over time. We sort it out before it becomes a bigger problem.</p>
+</div>
+
+<div class="service-card">
+  <span class="service-num">06</span>
+  <div class="service-icon">
+    <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+  </div>
+  <div class="service-name">Commercial Roofing</div>
+  <p class="service-desc">Large scale, high stakes. We bring the same expertise and work ethic to every commercial project we take on.</p>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- GALLERY — B&W IMAGE TREATMENT -->
+
+<div id="gallery">
+  <div class="gallery-header">
+    <div class="section-tag" style="color:var(--sage)">
+      <span style="background:var(--sage);width:24px;height:2px;display:block"></span>
+      Our Work
+    </div>
+    <h2 class="section-h2 section-h2-light">The Proof<br>Is Up There</h2>
+    <p class="gallery-note">Hover over images to see full colour — all job photos treated in black & white for a consistent, premium feel</p>
+  </div>
+
+  <div class="gallery-strip">
+    <div class="gallery-item">
+      <img class="gallery-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800" alt="Roof repair job">
+      <div class="gallery-label">Roof Repair — Johannesburg</div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600" alt="Waterproofing">
+      <div class="gallery-label">Waterproofing — Cape Town</div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-img colour" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800" alt="New roof installation">
+      <div class="gallery-label">Full Replacement — Durban</div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-img" src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600" alt="Commercial roofing">
+      <div class="gallery-label">Commercial — Pretoria</div>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE TREATMENT GUIDE -->
+
+<div id="treatment">
+  <div style="padding:0">
+    <div class="section-tag" style="color:var(--olive)">
+      <span style="background:var(--olive);width:24px;height:2px;display:block"></span>
+      For Your Reference
+    </div>
+    <h2 class="section-h2" style="color:var(--cream)">Image Treatment<br>Direction</h2>
+    <p style="font-size:14px;color:#666;margin-top:12px;max-width:520px;line-height:1.7">
+      Apply one of these three treatments consistently to all images on your Squarespace site. This is what keeps the brand looking cohesive even when you're uploading real job photos over time.
+    </p>
+  </div>
+
+  <div class="treatment-grid">
+    <div class="treatment-card">
+      <div class="treatment-preview bw"></div>
+      <div class="treatment-info">
+        <div class="treatment-name">① Black & White — Primary</div>
+        <p class="treatment-desc">Use for all hero images and gallery photos. Keeps the page feeling premium and consistent regardless of lighting conditions in your job photos.</p>
+        <code class="treatment-code">grayscale(100%) contrast(1.1) brightness(0.85)</code>
+      </div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-preview colour-treated"></div>
+      <div class="treatment-info">
+        <div class="treatment-name">② Muted Colour — Secondary</div>
+        <p class="treatment-desc">For before/after comparisons where colour matters. Desaturated slightly so it still feels on-brand — not raw phone camera colours.</p>
+        <code class="treatment-code">contrast(1.05) saturate(0.85) brightness(0.88)</code>
+      </div>
+    </div>
+    <div class="treatment-card">
+      <div class="treatment-preview original"></div>
+      <div class="treatment-info">
+        <div class="treatment-name">③ Full Colour — Avoid</div>
+        <p class="treatment-desc">Unedited phone photos on a premium site look inconsistent. If you must use full colour, crop tightly and ensure good lighting before uploading.</p>
+        <code class="treatment-code">Use sparingly — team photos only</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+
+<section id="reviews">
+  <div class="reviews-header">
+    <div class="section-tag">What Clients Say</div>
+    <h2 class="section-h2">24 Years of<br>Kept Promises</h2>
+  </div>
+
+  <div class="reviews-grid">
+
+```
+<div class="review-card">
+  <div class="review-stars">★★★★★</div>
+  <p class="review-text">"Called on a Tuesday morning after a leak overnight. Sambo had someone on my roof by that afternoon. Fixed, cleaned up, and gone before dinner. That's service."</p>
+  <div class="review-author">Thabo M.</div>
+  <div class="review-location">Sandton, Johannesburg</div>
+</div>
+
+<div class="review-card">
+  <div class="review-stars">★★★★★</div>
+  <p class="review-text">"We've used three roofing companies over the years. Sambo are the only ones who gave us a written quote, stuck to it, and followed up a month later to check everything was still holding."</p>
+  <div class="review-author">Karen & Steve B.</div>
+  <div class="review-location">Durban North</div>
+</div>
+
+<div class="review-card">
+  <div class="review-stars">★★★★★</div>
+  <p class="review-text">"Waterproofed our entire flat roof and balcony. Two years later — not a single issue through two rainy seasons. The guarantee gave us peace of mind before we even started."</p>
+  <div class="review-author">Priya N.</div>
+  <div class="review-location">Umhlanga, Durban</div>
+</div>
+```
+
+  </div>
+
+  <div class="reviews-footer">
+    <div class="google-badge">
+      <div>
+        <div style="color:#4A6741;font-size:14px;letter-spacing:2px">★★★★★</div>
+      </div>
+      <div>
+        <div class="google-badge-score">4.9</div>
+        <div class="google-badge-detail">Google Rating<br>Based on 87 reviews</div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);max-width:320px;line-height:1.6">
+      Every review is real, named, and verifiable on our Google Business Profile.
+    </p>
+  </div>
+</section>
+
+<!-- CALLOUT REQUEST FORM -->
+
+<section id="callout">
+  <div class="callout-wrap">
+
+```
+<div class="callout-left">
+  <div class="section-tag" style="color:var(--sage)">
+    <span style="background:var(--sage);width:24px;height:2px;display:block"></span>
+    Get In Touch
+  </div>
+  <h2 class="section-h2 section-h2-light">Request a<br>Call Out</h2>
+  <p style="font-size:16px;color:var(--sage);line-height:1.8;margin-top:16px;font-weight:300;max-width:400px">
+    Tell us what's happening and we'll get back to you within a few hours to book your free inspection.
+  </p>
+
+  <div class="callout-promise">
+    <div class="promise-item">
+      <div class="promise-dot"></div>
+      <p class="promise-text"><strong>Free inspection</strong> — we come to you, assess the roof, and give you a written report at no charge.</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-dot"></div>
+      <p class="promise-text"><strong>Same-day response</strong> — we reply within hours, not days.</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-dot"></div>
+      <p class="promise-text"><strong>No obligation</strong> — the inspection is yours whether you use us or not.</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-dot"></div>
+      <p class="promise-text"><strong>5-year written guarantee</strong> on all workmanship.</p>
+    </div>
+  </div>
+</div>
+
+<div class="form-wrap">
+  <div class="form-title">Book Your Free Inspection</div>
+  <p class="form-sub">We'll call you back within a few hours to confirm a time.</p>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">First Name</label>
+      <input type="text" class="form-input" placeholder="Your name">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Surname</label>
+      <input type="text" class="form-input" placeholder="Your surname">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Phone Number</label>
+    <input type="tel" class="form-input" placeholder="+27">
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Service Needed</label>
+    <select class="form-select">
+      <option value="">Select a service...</option>
+      <option>Roof Repair</option>
+      <option>Waterproofing</option>
+      <option>New Roof / Replacement</option>
+      <option>Roof Inspection</option>
+      <option>Gutters & Drainage</option>
+      <option>Commercial Roofing</option>
+      <option>Not Sure — Need Advice</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Tell Us What's Happening</label>
+    <textarea class="form-textarea" placeholder="Describe the issue briefly — a leak, damage, general inspection..."></textarea>
+  </div>
+
+  <button class="form-submit btn">Send My Request →</button>
+  <p class="form-note">No spam. No sales calls. Just a roofer calling to help.</p>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div>
+    <a href="#hero" class="footer-logo">SAMBO<span>.</span></a>
+    <div class="footer-tagline">Roofing · Built to Last · Est. 2001</div>
+  </div>
+  <div class="footer-copy">
+    © 2025 Sambo Roofing. All rights reserved.<br>
+    rizqah@samboroofing.co.za · +27 71 234 5678
+  </div>
+</footer>
+
+</body>
+</html>
